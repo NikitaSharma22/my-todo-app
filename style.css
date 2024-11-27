@@ -1,0 +1,172 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Dark Theme */
+body.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Header */
+.header h1 {
+    font-family: 'Cursive', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4A90E2;
+    text-align: center;
+}
+
+/* Input and Button */
+.input-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#taskInput {
+    width: 60%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#addTaskButton {
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #4A90E2;
+    color: white;
+    border-radius: 4px;
+}
+
+#addTaskButton:hover {
+    background-color: #357ABD;
+}
+
+/* Task List */
+#taskList {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 1.2rem;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+li.done {
+    text-decoration: line-through;
+    color: #8c8c8c;
+}
+
+li.not-needed {
+    font-style: italic;
+    color: green;
+}
+
+/* Context Menu */
+#contextMenu {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+#contextMenu button {
+    background-color: #555;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 14px;
+}
+
+#contextMenu button:hover {
+    background-color: #777;
+}
+
+#contextMenu .hidden {
+    display: none;
+}
+
+/* Undo Section */
+#undoContainer {
+    margin-top: 20px;
+    text-align: center;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#undoContainer.hidden {
+    display: none;
+}
+
+#undoButton {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#undoButton:hover {
+    background: #0056b3;
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4A90E2;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+#themeToggle:hover {
+    color: #357ABD;
+}
