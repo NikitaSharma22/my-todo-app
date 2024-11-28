@@ -3,48 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App</title>
-    
-    <!-- Link to the icons (both 192x192 and 512x512) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/icons/192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icons/512.png">
-
-    <!-- Link to your CSS -->
+    <title>Task Manager</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="manifest" href="/manifest.json">
-
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/512.png">
 </head>
 <body>
-
     <div class="container">
-        <div class="header">
-            <h1>My To-Do List</h1>
-            <button id="themeToggle">🌙</button>
-        </div>
-        <div class="input-section">
-            <input type="text" id="taskInput" placeholder="Add a new task">
-            <button id="addTaskButton">Add</button>
+        <h1>Task Keeper</h1>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button id="addTaskBtn">+</button>
         </div>
         <ul id="taskList"></ul>
-
-        <!-- Context Menu -->
-        <div id="contextMenu" class="hidden">
-            <ul>
-                <li id="editTask">Edit</li>
-                <li id="markDone">Done</li>
-                <li id="markNotNeeded">Not Needed</li>
-                <li id="deleteTask">Delete</li>
-            </ul>
-        </div>
-
-        <!-- Undo Container -->
-        <div id="undoContainer" class="hidden">
-            <span>Task deleted. </span>
-            <button id="undoButton">Undo</button>
-        </div>
+    </div>
+    
+    <div id="contextMenu" class="context-menu">
+        <ul>
+            <li data-action="edit">Edit</li>
+            <li data-action="delete">Delete</li>
+            <li data-action="done">Done</li>
+            <li data-action="not-needed">Not Needed</li>
+        </ul>
     </div>
 
-    <!-- Link to your JS -->
     <script src="/script.js"></script>
 </body>
 </html>
