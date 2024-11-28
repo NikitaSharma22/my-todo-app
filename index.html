@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Keeper</title>
-    <link rel="stylesheet" href="css.css">
-    <script src="js.js"></script>
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" sizes="192x192" href="/192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="/512.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Keeper</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Task Keeper</h1>
-        <div class="input-container">
-            <input type="text" id="taskInput" placeholder="Enter a new task...">
-            <button id="addTaskBtn">+</button>
-        </div>
-        <ul id="taskList"></ul>
+  <div class="container">
+    <h1>Task Keeper</h1>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter your task" />
+      <button id="addTaskButton">Add Task</button>
     </div>
-
-    <div id="contextMenu" class="context-menu">
-        <ul>
-            <li data-action="edit">Edit</li>
-            <li data-action="delete">Delete</li>
-            <li data-action="done">Done</li>
-            <li data-action="not-needed">Not Needed</li>
-        </ul>
+    <div>
+      <h2>Tasks</h2>
+      <ul id="taskList"></ul>
     </div>
+    <div>
+      <button id="trashBinButton">🗑️ Trash Bin</button>
+    </div>
+    <div id="trashBinModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Deleted Tasks</h2>
+        <ul id="trashList"></ul>
+        <button id="closeTrashButton">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
