@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contextMenu = document.getElementById('contextMenu');
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     let currentTask = null;
+    let deletedTask = null;
+    let deletedTaskIndex = null;
 
     function saveTasks() {
         localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -78,8 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 break;
             case 'delete':
-                const deletedTask = tasks.splice(index, 1)[0];
-                showUndo(deletedTask, index);
+                deletedTask = tasks.splice(index, 1)[0];
+                deletedTaskIndex = index;
+                showUndo(deletedTask, deletedTaskIndex);
                 break;
             case 'done':
                 tasks[index].done = !tasks[index].done;
@@ -95,9 +98,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showUndo(task, originalIndex) {
+        // Display a UI element to allow the user to undo the deletion
+        const undoContainer = document.createElement('div');
+        undoContainer.classList.add('undo-container');
+        undoContainer.textContent = `Deleted "${task.text}". Undo?`;
+
+        const undoButton = document.createElement('button');
+        undoButton.textContent = 'Undo';
+        undoButton.addEventListener('click', handleUndo);
+
+        undoContainer.appendChild(undoButton);
+        taskList.insertBefore(undoContainer, taskList.firstChild);
+
+        // Remove the undo container after 5 seconds
         const undoTimeout = setTimeout(() => {
+            taskList.removeChild(undoContainer);
             clearTimeout(undoTimeout);
         }, 5000);
+    }
+
+    function handleUndo() {
+        // Restore the deleted task
+        tasks.splice(deletedTaskIndex, 0, deletedTask);
+        saveTasks();
+        renderTasks();
+
+        // Remove the undo container
+        const undoContainer = document.querySelector('.undo-container');
+        taskList.removeChild(undoContainer);
+
+        deletedTask = null;
+        deletedTaskIndex = null;
     }
 
     // Event Listeners
